@@ -87,3 +87,11 @@ export async function createNodesFromFiles<T = unknown>(
   }
   return results;
 }
+
+export function isRuntimePlugin(plugin: LoadedNxPlugin): boolean {
+  return !!(
+    plugin.createNodes ||
+    plugin.createDependencies ||
+    plugin.processProjectGraph
+  );
+}
