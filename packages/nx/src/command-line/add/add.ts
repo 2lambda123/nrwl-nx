@@ -15,6 +15,7 @@ import { nxVersion } from '../../utils/versions';
 import { workspaceRoot } from '../../utils/workspace-root';
 import type { AddOptions } from './command-object';
 import { normalizeVersionForNxJson } from '../init/implementation/dot-nx/add-nx-scripts';
+import { readDependenciesFromNxJson } from '../../utils/nx-installation';
 
 export function addHandler(options: AddOptions): Promise<number> {
   if (options.verbose) {
@@ -63,18 +64,22 @@ async function installPackage(
       })
     );
   } else {
-    nxJson.installation.plugins ??= {};
-    nxJson.installation.plugins[pkgName] = normalizeVersionForNxJson(
-      pkgName,
-      version
-    );
+    const pluginDefinition = {
+      plugin: pkgName,
+      version: normalizeVersionForNxJson(pkgName, version),
+    };
+    if (readDependenciesFromNxJson(nxJson)[pkgName] === undefined) {
+      nxJson.plugins ??= [];
+      nxJson.plugins.push(pluginDefinition);
+    }
     writeJsonFile('nx.json', nxJson);
 
     try {
       await runNxAsync('--help', { silent: true });
     } catch (e) {
       // revert adding the plugin to nx.json
-      nxJson.installation.plugins[pkgName] = undefined;
+      const pluginIdx = nxJson.plugins.findIndex((p) => p === pluginDefinition);
+      nxJson.plugins.splice(pluginIdx, 1);
       writeJsonFile('nx.json', nxJson);
 
       spinner.fail();
