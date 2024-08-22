@@ -439,9 +439,9 @@ describe('app', () => {
           preset: '../jest.preset.js',
           testEnvironment: 'node',
           transform: {
-            '^.+\\\\.[tj]s$': '@swc/jest',
+            '^.+\\\\.[mc]?[tj]s$': '@swc/jest',
           },
-          moduleFileExtensions: ['ts', 'js', 'html'],
+          moduleFileExtensions: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'html'],
           coverageDirectory: '../coverage/my-node-app',
         };
         "
@@ -466,9 +466,9 @@ describe('app', () => {
           preset: '../jest.preset.js',
           testEnvironment: 'node',
           transform: {
-            '^.+\\\\.[tj]s$': 'babel-jest',
+            '^.+\\\\.[mc]?[tj]s$': 'babel-jest',
           },
-          moduleFileExtensions: ['ts', 'js', 'html'],
+          moduleFileExtensions: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'html'],
           coverageDirectory: '../coverage/my-node-app',
         };
         "
