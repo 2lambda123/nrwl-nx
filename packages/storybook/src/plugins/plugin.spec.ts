@@ -83,7 +83,7 @@ describe('@nx/storybook/plugin', () => {
       inputs: [
         'production',
         '^production',
-        { externalDependencies: ['storybook', '@storybook/test-runner'] },
+        { externalDependencies: ['storybook'] },
       ],
     });
     expect(
@@ -142,11 +142,7 @@ describe('@nx/storybook/plugin', () => {
         'production',
         '^production',
         {
-          externalDependencies: [
-            'storybook',
-            '@storybook/angular',
-            '@storybook/test-runner',
-          ],
+          externalDependencies: ['storybook', '@storybook/angular'],
         },
       ],
     });
@@ -213,7 +209,7 @@ describe('@nx/storybook/plugin', () => {
       inputs: [
         'production',
         '^production',
-        { externalDependencies: ['storybook', '@storybook/test-runner'] },
+        { externalDependencies: ['storybook'] },
       ],
     });
     expect(
