@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 use napi::bindgen_prelude::External;
 use rusqlite::Connection;
-use tracing::debug;
+use tracing::{debug, trace};
 use crate::native::machine_id::get_machine_id;
 
 #[napi]
@@ -65,6 +65,7 @@ pub fn connect_to_nx_db(
 fn create_connection(db_path: &PathBuf) -> anyhow::Result<Connection> {
     debug!("Creating connection to {:?}", db_path);
     let c = Connection::open(db_path).map_err(anyhow::Error::from)?;
+    trace!("Connection created");
 
     // This allows writes at the same time as reads
     c.pragma_update(None, "journal_mode", "WAL")?;
