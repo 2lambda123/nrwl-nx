@@ -322,6 +322,14 @@ export function DocumentationHeader({
               Docs
             </Link>
             <Link
+              href="/courses"
+              title="Courses"
+              className="hidden px-3 py-2 font-medium leading-tight hover:text-blue-500 md:inline-flex dark:text-slate-200 dark:hover:text-sky-500"
+              prefetch={false}
+            >
+              Courses
+            </Link>
+            <Link
               href="/blog"
               title="Blog"
               className="hidden px-3 py-2 font-medium leading-tight hover:text-blue-500 md:inline-flex dark:text-slate-200 dark:hover:text-sky-500"
