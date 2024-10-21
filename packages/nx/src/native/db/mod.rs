@@ -1,10 +1,12 @@
+use rusqlite::OpenFlags;
 use std::fs::{create_dir_all, remove_file};
 use std::path::PathBuf;
+use std::time::Duration;
 
+use crate::native::machine_id::get_machine_id;
 use napi::bindgen_prelude::External;
 use rusqlite::Connection;
 use tracing::debug;
-use crate::native::machine_id::get_machine_id;
 
 #[napi]
 pub fn connect_to_nx_db(
@@ -13,15 +15,15 @@ pub fn connect_to_nx_db(
     db_name: Option<String>,
 ) -> anyhow::Result<External<Connection>> {
     let cache_dir_buf = PathBuf::from(cache_dir);
-    let db_path = cache_dir_buf.join(format!(
-        "{}.db",
-        db_name.unwrap_or_else(get_machine_id)
-    ));
+    let db_path = cache_dir_buf.join(format!("{}.db", db_name.unwrap_or_else(get_machine_id)));
     create_dir_all(cache_dir_buf)?;
 
     let c = create_connection(&db_path)?;
 
-    debug!("Checking if current existing database is compatible with Nx {}", nx_version);
+    debug!(
+        "Checking if current existing database is compatible with Nx {}",
+        nx_version
+    );
     let db_version = c.query_row(
         "SELECT value FROM metadata WHERE key='NX_VERSION'",
         [],
@@ -64,13 +66,23 @@ pub fn connect_to_nx_db(
 
 fn create_connection(db_path: &PathBuf) -> anyhow::Result<Connection> {
     debug!("Creating connection to {:?}", db_path);
-    let c = Connection::open(db_path).map_err(anyhow::Error::from)?;
+    let c = Connection::open_with_flags(
+        db_path,
+        OpenFlags::SQLITE_OPEN_READ_WRITE
+            | OpenFlags::SQLITE_OPEN_CREATE
+            | OpenFlags::SQLITE_OPEN_URI
+            | OpenFlags::SQLITE_OPEN_FULL_MUTEX,
+    )
+    .map_err(anyhow::Error::from)?;
 
     // This allows writes at the same time as reads
     c.pragma_update(None, "journal_mode", "WAL")?;
 
     // This makes things less synchronous than default
     c.pragma_update(None, "synchronous", "NORMAL")?;
+
+    c.busy_timeout(Duration::from_millis(25))?;
+    c.busy_handler(Some(|tries| tries < 6))?;
 
     Ok(c)
 }

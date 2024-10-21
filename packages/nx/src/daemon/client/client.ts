@@ -123,10 +123,7 @@ export class DaemonClient {
 
   enabled() {
     if (this._enabled === undefined) {
-      // TODO(v19): Add migration to move it out of existing configs and remove the ?? here.
-      const useDaemonProcessOption =
-        this.nxJson?.useDaemonProcess ??
-        this.nxJson?.tasksRunnerOptions?.['default']?.options?.useDaemonProcess;
+      const useDaemonProcessOption = this.nxJson?.useDaemonProcess;
       const env = process.env.NX_DAEMON;
 
       // env takes precedence
@@ -597,7 +594,7 @@ export class DaemonClient {
         cwd: workspaceRoot,
         stdio: ['ignore', this._out.fd, this._err.fd],
         detached: true,
-        windowsHide: true,
+        windowsHide: false,
         shell: false,
         env: {
           ...process.env,

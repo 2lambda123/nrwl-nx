@@ -21,7 +21,7 @@ function getSwcCmd(
 ) {
   const swcCLI = require.resolve('@swc/cli/bin/swc.js');
   let inputDir: string;
-  // TODO(v20): remove inline feature
+  // TODO(v21): remove inline feature
   if (inline) {
     inputDir = originalProjectRoot.split('/')[0];
   } else {
@@ -85,7 +85,7 @@ export async function compileSwc(
   const swcCmdLog = execSync(getSwcCmd(normalizedOptions), {
     encoding: 'utf8',
     cwd: normalizedOptions.swcCliOptions.swcCwd,
-    windowsHide: true,
+    windowsHide: false,
   });
   logger.log(swcCmdLog.replace(/\n/, ''));
   const isCompileSuccess = swcCmdLog.includes('Successfully compiled');
@@ -138,7 +138,7 @@ export async function* compileSwcWatch(
 
       const swcWatcher = exec(getSwcCmd(normalizedOptions, true), {
         cwd: normalizedOptions.swcCliOptions.swcCwd,
-        windowsHide: true,
+        windowsHide: false,
       });
 
       processOnExit = () => {

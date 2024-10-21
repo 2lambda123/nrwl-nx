@@ -18,6 +18,7 @@ import {
   getRelativePathToRootTsConfig,
   initGenerator as jsInitGenerator,
 } from '@nx/js';
+import { assertNotUsingTsSolutionSetup } from '@nx/js/src/utils/typescript/ts-solution-setup';
 import { updateGitIgnore } from '../../utils/update-gitignore';
 import { Linter } from '@nx/eslint';
 import { addE2e } from './lib/add-e2e';
@@ -33,6 +34,8 @@ import {
 } from 'nx/src/nx-cloud/utilities/onboarding';
 
 export async function applicationGenerator(tree: Tree, schema: Schema) {
+  assertNotUsingTsSolutionSetup(tree, 'nuxt', 'application');
+
   const tasks: GeneratorCallback[] = [];
 
   const options = await normalizeOptions(tree, schema);
@@ -156,7 +159,7 @@ export async function applicationGenerator(tree: Tree, schema: Schema) {
       execSync(`npx -y nuxi prepare`, {
         cwd: options.appProjectRoot,
 
-        windowsHide: true,
+        windowsHide: false,
       });
     } catch (e) {
       console.error(

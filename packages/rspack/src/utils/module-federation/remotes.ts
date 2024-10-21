@@ -16,11 +16,19 @@ export function mapRemotes(
 ): Record<string, string> {
   const mappedRemotes = {};
 
-  for (const remote of remotes) {
-    if (Array.isArray(remote)) {
-      mappedRemotes[remote[0]] = handleArrayRemote(remote, remoteEntryExt);
-    } else if (typeof remote === 'string') {
-      mappedRemotes[remote] = handleStringRemote(remote, determineRemoteUrl);
+  for (const nxRemoteProjectName of remotes) {
+    if (Array.isArray(nxRemoteProjectName)) {
+      const mfRemoteName = normalizeRemoteName(nxRemoteProjectName[0]);
+      mappedRemotes[mfRemoteName] = handleArrayRemote(
+        nxRemoteProjectName,
+        remoteEntryExt
+      );
+    } else if (typeof nxRemoteProjectName === 'string') {
+      const mfRemoteName = normalizeRemoteName(nxRemoteProjectName);
+      mappedRemotes[mfRemoteName] = handleStringRemote(
+        nxRemoteProjectName,
+        determineRemoteUrl
+      );
     }
   }
 
@@ -32,11 +40,12 @@ function handleArrayRemote(
   remote: [string, string],
   remoteEntryExt: 'js' | 'mjs'
 ): string {
-  const [remoteName, remoteLocation] = remote;
+  let [nxRemoteProjectName, remoteLocation] = remote;
+  const mfRemoteName = normalizeRemoteName(nxRemoteProjectName);
   const remoteLocationExt = extname(remoteLocation);
 
   // If remote location already has .js or .mjs extension
-  if (['.js', '.mjs'].includes(remoteLocationExt)) {
+  if (['.js', '.mjs', '.json'].includes(remoteLocationExt)) {
     return remoteLocation;
   }
 
@@ -44,7 +53,7 @@ function handleArrayRemote(
     ? remoteLocation.slice(0, -1)
     : remoteLocation;
 
-  const globalPrefix = `${remoteName.replace(/-/g, '_')}@`;
+  const globalPrefix = `${normalizeRemoteName(mfRemoteName)}@`;
 
   // if the remote is defined with anything other than http then we assume it's a promise based remote
   // In that case we should use what the user provides as the remote location
@@ -57,12 +66,12 @@ function handleArrayRemote(
 
 // Helper function to deal with remotes that are strings
 function handleStringRemote(
-  remote: string,
-  determineRemoteUrl: (remote: string) => string
+  nxRemoteProjectName: string,
+  determineRemoteUrl: (nxRemoteProjectName: string) => string
 ): string {
-  const globalPrefix = `${remote.replace(/-/g, '_')}@`;
+  const globalPrefix = `${normalizeRemoteName(nxRemoteProjectName)}@`;
 
-  return `${globalPrefix}${determineRemoteUrl(remote)}`;
+  return `${globalPrefix}${determineRemoteUrl(nxRemoteProjectName)}`;
 }
 
 /**
@@ -82,9 +91,10 @@ export function mapRemotesForSSR(
 
   for (const remote of remotes) {
     if (Array.isArray(remote)) {
-      const [remoteName, remoteLocation] = remote;
+      let [nxRemoteProjectName, remoteLocation] = remote;
+      const mfRemoteName = normalizeRemoteName(nxRemoteProjectName);
       const remoteLocationExt = extname(remoteLocation);
-      mappedRemotes[remoteName] = `${remoteName}@${
+      mappedRemotes[mfRemoteName] = `${mfRemoteName}@${
         ['.js', '.mjs'].includes(remoteLocationExt)
           ? remoteLocation
           : `${
@@ -94,9 +104,16 @@ export function mapRemotesForSSR(
             }/remoteEntry.${remoteEntryExt}`
       }`;
     } else if (typeof remote === 'string') {
-      mappedRemotes[remote] = `${remote}@${determineRemoteUrl(remote)}`;
+      const mfRemoteName = normalizeRemoteName(remote);
+      mappedRemotes[mfRemoteName] = `${mfRemoteName}@${determineRemoteUrl(
+        remote
+      )}`;
     }
   }
 
   return mappedRemotes;
+}
+
+function normalizeRemoteName(nxRemoteProjectName: string): string {
+  return nxRemoteProjectName.replace(/-/g, '_');
 }

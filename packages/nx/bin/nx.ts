@@ -167,18 +167,9 @@ function resolveNx(workspace: WorkspaceTypeAndRoot | null) {
   } catch {}
 
   // check for root install
-  try {
-    return require.resolve('nx/bin/nx.js', {
-      paths: [workspace ? workspace.dir : globalsRoot],
-    });
-  } catch {
-    // TODO(v17): Remove this
-    // fallback for old CLI install setup
-    // nx-ignore-next-line
-    return require.resolve('@nrwl/cli/bin/nx.js', {
-      paths: [workspace ? workspace.dir : globalsRoot],
-    });
-  }
+  return require.resolve('nx/bin/nx.js', {
+    paths: [workspace ? workspace.dir : globalsRoot],
+  });
 }
 
 function handleMissingLocalInstallation() {
@@ -261,14 +252,14 @@ function getLocalNxVersion(workspace: WorkspaceTypeAndRoot): string | null {
 function _getLatestVersionOfNx(): string {
   try {
     return execSync('npm view nx@latest version', {
-      windowsHide: true,
+      windowsHide: false,
     })
       .toString()
       .trim();
   } catch {
     try {
       return execSync('pnpm view nx@latest version', {
-        windowsHide: true,
+        windowsHide: false,
       })
         .toString()
         .trim();
