@@ -11,7 +11,6 @@ import { sep } from 'node:path';
  */
 
 export const packageManagerList = ['pnpm', 'yarn', 'npm', 'bun'] as const;
-const npm_config_user_agent = process.env.npm_config_user_agent || '';
 
 export type PackageManager = (typeof packageManagerList)[number];
 
