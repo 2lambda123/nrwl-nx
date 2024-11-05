@@ -283,17 +283,18 @@ export async function importHandler(options: ImportOptions) {
   // If install fails, we should continue since the errors could be resolved later.
   let installFailed = false;
   if (plugins.length > 0) {
-    try {
-      output.log({ title: 'Installing Plugins' });
-      installPlugins(workspaceRoot, plugins, pmc, updatePackageScripts);
-
+    output.log({ title: 'Installing Plugins' });
+    const { succeededPlugins, failedPlugins } = installPlugins(
+      workspaceRoot,
+      plugins,
+      pmc,
+      updatePackageScripts
+    );
+    if (succeededPlugins.length > 0) {
       await destinationGitClient.amendCommit();
-    } catch (e) {
+    }
+    if (failedPlugins.length > 0) {
       installFailed = true;
-      output.error({
-        title: `Install failed: ${e.message || 'Unknown error'}`,
-        bodyLines: [e.stack],
-      });
     }
   } else if (await needsInstall(packageManager, originalPackageWorkspaces)) {
     try {

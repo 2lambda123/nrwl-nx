@@ -41,7 +41,10 @@ export function installPlugins(
   plugins: string[],
   pmc: PackageManagerCommands,
   updatePackageScripts: boolean
-) {
+): {
+  succeededPlugins: string[];
+  failedPlugins: string[];
+} {
   if (plugins.length === 0) {
     return;
   }
@@ -51,18 +54,47 @@ export function installPlugins(
   runInstall(repoRoot, pmc);
 
   output.log({ title: '🔨 Configuring plugins' });
+  const succeededPlugins = [];
+  const failedPlugins = [];
   for (const plugin of plugins) {
-    execSync(
-      `${pmc.exec} nx g ${plugin}:init --keepExistingVersions ${
-        updatePackageScripts ? '--updatePackageScripts' : ''
-      }`,
-      {
-        stdio: [0, 1, 2],
-        cwd: repoRoot,
-        windowsHide: false,
-      }
-    );
+    try {
+      execSync(
+        `${pmc.exec} nx g ${plugin}:init --keepExistingVersions ${
+          updatePackageScripts ? '--updatePackageScripts' : ''
+        }`,
+        {
+          stdio: [0, 1, 2],
+          cwd: repoRoot,
+          windowsHide: false,
+        }
+      );
+      succeededPlugins.push(plugin);
+    } catch (e) {
+      failedPlugins.push(plugin);
+      output.error({
+        title: `Install plugin ${plugin} failed: ${
+          e.message || 'Unknown error'
+        }`,
+        bodyLines: [e.stack],
+      });
+    }
   }
+  if (succeededPlugins.length > 0) {
+    output.success({
+      title: 'Installed Plugins',
+      bodyLines: succeededPlugins.map((p) => `- ${p}`),
+    });
+  }
+  if (failedPlugins.length > 0) {
+    output.error({
+      title: 'Failed to install Plugins',
+      bodyLines: [
+        ...failedPlugins.map((p) => `- ${p}`),
+        'You may need to install them manually.',
+      ],
+    });
+  }
+  return { succeededPlugins, failedPlugins };
 }
 
 export async function initHandler(options: InitArgs): Promise<void> {
