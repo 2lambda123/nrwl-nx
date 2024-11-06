@@ -20,6 +20,7 @@ import {
   stripIndents,
   Tree,
   updateNxJson,
+  writeJson,
 } from '@nx/devkit';
 
 import reactInitGenerator from '../init/init';
@@ -46,8 +47,12 @@ import { initGenerator as jsInitGenerator } from '@nx/js';
 import { logShowProjectCommand } from '@nx/devkit/src/utils/log-show-project-command';
 import { setupTailwindGenerator } from '../setup-tailwind/setup-tailwind';
 import { useFlatConfig } from '@nx/eslint/src/utils/flat-config';
-import { assertNotUsingTsSolutionSetup } from '@nx/js/src/utils/typescript/ts-solution-setup';
+import {
+  assertNotUsingTsSolutionSetup,
+  isUsingTsSolutionSetup,
+} from '@nx/js/src/utils/typescript/ts-solution-setup';
 import { addProjectRootToRspackPluginExcludesIfExists } from './lib/add-project-root-to-rspack-plugin-excludes';
+import { getImportPath } from '@nx/js/src/utils/get-import-path';
 
 async function addLinting(host: Tree, options: NormalizedSchema) {
   const tasks: GeneratorCallback[] = [];
@@ -203,6 +208,7 @@ export async function applicationGeneratorInternal(
       compiler: options.compiler,
       skipFormat: true,
       addPlugin: options.addPlugin,
+      projectType: 'application',
     });
     tasks.push(viteTask);
     createOrEditViteConfig(
