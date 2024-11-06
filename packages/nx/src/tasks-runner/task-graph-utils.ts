@@ -19,6 +19,10 @@ function _findCycle(
   return null;
 }
 
+/**
+ * This function finds a cycle in the graph.
+ * @returns the first cycle found, or null if no cycle is found.
+ */
 export function findCycle(graph: {
   dependencies: Record<string, string[]>;
 }): string[] | null {
@@ -33,6 +37,29 @@ export function findCycle(graph: {
   }
 
   return null;
+}
+
+/**
+ * This function finds all cycles in the graph.
+ * @returns a list of cycles, where each cycle is a list of task ids.
+ */
+export function findCycles(graph: {
+  dependencies: Record<string, string[]>;
+}): string[][] {
+  const visited = {};
+  const cycles = [];
+  for (const t of Object.keys(graph.dependencies)) {
+    visited[t] = false;
+  }
+
+  for (const t of Object.keys(graph.dependencies)) {
+    const cycle = _findCycle(graph, t, visited, [t]);
+    if (cycle) {
+      cycles.push(cycle);
+    }
+  }
+
+  return cycles;
 }
 
 function _makeAcyclic(
