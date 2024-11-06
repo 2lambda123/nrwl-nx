@@ -1,6 +1,7 @@
 import {
   formatFiles,
   GeneratorCallback,
+  logger,
   output,
   readJson,
   readNxJson,
@@ -12,6 +13,7 @@ import {
   getRootTsConfigFileName,
   initGenerator as jsInitGenerator,
 } from '@nx/js';
+import { isUsingTsSolutionSetup } from '@nx/js/src/utils/typescript/ts-solution-setup';
 import { JestPluginOptions } from '../../plugins/plugin';
 import { getPresetExt } from '../../utils/config/config-file';
 import { jestInitGenerator } from '../init/init';
@@ -74,6 +76,7 @@ function normalizeOptions(
     ...schemaDefaults,
     ...options,
     rootProject: project.root === '.' || project.root === '',
+    isTsSolutionSetup: isUsingTsSolutionSetup(tree),
   };
 }
 
@@ -115,8 +118,13 @@ export async function configurationGeneratorInternal(
       );
     }
   });
+
   if (!hasPlugin || options.addExplicitTargets) {
     updateWorkspace(tree, options);
+  }
+
+  if (options.isTsSolutionSetup) {
+    ignoreTestOutput(tree);
   }
 
   if (!schema.skipFormat) {
@@ -156,6 +164,20 @@ function getUnsupportedModuleResolutionWarningTask(
   }
 
   return () => {};
+}
+
+function ignoreTestOutput(tree: Tree): void {
+  if (!tree.exists('.gitignore')) {
+    logger.warn(`Couldn't find a root .gitignore file to update.`);
+  }
+
+  let content = tree.read('.gitignore', 'utf-8');
+  if (/^test-output$/gm.test(content)) {
+    return;
+  }
+
+  content = `${content}\ntest-output\n`;
+  tree.write('.gitignore', content);
 }
 
 export default configurationGenerator;
