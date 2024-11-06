@@ -119,7 +119,7 @@ Try playing around with a [fully interactive graph on a sample repo](https://nrw
     },
     {
       "name": "e2e-cart",
-      "type": "e2e",
+      "type": "app",
       "data": {
         "root": "e2e/cart",
         "tags": ["scope:cart", "type:e2e"]
