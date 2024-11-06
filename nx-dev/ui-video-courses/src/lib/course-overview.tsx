@@ -1,8 +1,7 @@
-import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Course } from '@nx/nx-dev/data-access-courses';
 import { cx } from '@nx/nx-dev/ui-primitives';
+import { ClockIcon } from '@heroicons/react/24/outline';
 
 interface CourseOverviewProps {
   courses: Course[];
@@ -49,19 +48,7 @@ export function CourseOverview({ courses }: CourseOverviewProps): JSX.Element {
                       •
                     </span>
                     <span className="flex items-center gap-1">
-                      <svg
-                        className="h-3 w-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
+                      <ClockIcon className="h-3 w-3" />
                       {course.totalDuration}
                     </span>
                   </div>
