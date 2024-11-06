@@ -13,19 +13,6 @@ interface LessonPlayerProps {
   lesson: Lesson;
 }
 
-// Add this CSS at the top of the file
-const customStyles = `
-  @media (min-width: 1800px) {
-    .wide\\:flex-none { flex: none; }
-    .wide\\:w-\\[45\\%\\] { width: 45%; }
-    .wide\\:border-r { border-right-width: 1px; }
-    .wide\\:block { display: block; }
-    .wide\\:hidden { display: none; }
-    .wide\\:flex-1 { flex: 1 1 0%; }
-    .wide\\:overflow-y-auto { overflow-y: auto; }
-  }
-`;
-
 function formatDuration(duration: string): string {
   const [minutes, seconds] = duration.split(':').map(Number);
   return `${minutes}m ${seconds.toString().padStart(2, '0')}s`;
@@ -105,9 +92,6 @@ export function LessonPlayer({ course, lesson }: LessonPlayerProps) {
 
   return (
     <>
-      <style jsx global>
-        {customStyles}
-      </style>
       <Header />
       <div className="flex h-screen w-full pt-20">
         {/* Left Panel - Course Info & Lessons (Hidden on mobile) */}
