@@ -66,7 +66,7 @@ The executor accepts an `esbuildMidleware` option that allows you to provide HTT
       "executor": "@nx/angular:dev-server",
       "options": {
         ...
-        "esbuildMidleware": ["apps/my-app/hello-world.middleware.ts"]
+        "esbuildMiddleware": ["apps/my-app/hello-world.middleware.ts"]
       }
     }
     ...
