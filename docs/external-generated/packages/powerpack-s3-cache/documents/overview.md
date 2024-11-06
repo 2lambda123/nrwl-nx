@@ -19,7 +19,7 @@ In order to use `@nx/powerpack-s3-cache`, you need to have an active Powerpack l
 
 ### 1. Install the Package
 
-1. [Activate Powerpack](/recipes/installation/activate-powerpack) if you haven't already
+1. [Activate Powerpack](/nx-enterprise/activate-powerpack) if you haven't already
 2. Install the package
 
 ```shell
@@ -57,11 +57,10 @@ permissions:
   id-token: write
   ...
 
-env:
-  NX_DB_CACHE: true
-
 jobs:
   main:
+    env:
+      NX_POWERPACK_LICENSE: ${{ secrets.NX_POWERPACK_LICENSE }}
     runs-on: ubuntu-latest
     steps:
         ...

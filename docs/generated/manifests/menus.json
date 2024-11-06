@@ -324,39 +324,6 @@
             "disableCollapsible": false
           },
           {
-            "name": "Powerpack Features",
-            "path": "/features/powerpack",
-            "id": "powerpack",
-            "isExternal": false,
-            "children": [
-              {
-                "name": "Run Language-Agnostic Conformance Rules",
-                "path": "/features/powerpack/conformance",
-                "id": "conformance",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              },
-              {
-                "name": "Define Code Ownership at the Project Level",
-                "path": "/features/powerpack/owners",
-                "id": "owners",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              },
-              {
-                "name": "Self-Host the Remote Cache",
-                "path": "/features/powerpack/custom-caching",
-                "id": "custom-caching",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              }
-            ],
-            "disableCollapsible": false
-          },
-          {
             "name": "CI Features",
             "path": "/features/ci-features",
             "id": "ci-features",
@@ -468,63 +435,6 @@
         "name": "Manage Releases",
         "path": "/features/manage-releases",
         "id": "manage-releases",
-        "isExternal": false,
-        "children": [],
-        "disableCollapsible": false
-      },
-      {
-        "name": "Powerpack Features",
-        "path": "/features/powerpack",
-        "id": "powerpack",
-        "isExternal": false,
-        "children": [
-          {
-            "name": "Run Language-Agnostic Conformance Rules",
-            "path": "/features/powerpack/conformance",
-            "id": "conformance",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          },
-          {
-            "name": "Define Code Ownership at the Project Level",
-            "path": "/features/powerpack/owners",
-            "id": "owners",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          },
-          {
-            "name": "Self-Host the Remote Cache",
-            "path": "/features/powerpack/custom-caching",
-            "id": "custom-caching",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          }
-        ],
-        "disableCollapsible": false
-      },
-      {
-        "name": "Run Language-Agnostic Conformance Rules",
-        "path": "/features/powerpack/conformance",
-        "id": "conformance",
-        "isExternal": false,
-        "children": [],
-        "disableCollapsible": false
-      },
-      {
-        "name": "Define Code Ownership at the Project Level",
-        "path": "/features/powerpack/owners",
-        "id": "owners",
-        "isExternal": false,
-        "children": [],
-        "disableCollapsible": false
-      },
-      {
-        "name": "Self-Host the Remote Cache",
-        "path": "/features/powerpack/custom-caching",
-        "id": "custom-caching",
         "isExternal": false,
         "children": [],
         "disableCollapsible": false
@@ -1155,14 +1065,6 @@
             "id": "installation",
             "isExternal": false,
             "children": [
-              {
-                "name": "Activate Powerpack",
-                "path": "/recipes/installation/activate-powerpack",
-                "id": "activate-powerpack",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              },
               {
                 "name": "Install Nx in a Non-Javascript Repo",
                 "path": "/recipes/installation/install-non-javascript",
@@ -2145,14 +2047,6 @@
         "isExternal": false,
         "children": [
           {
-            "name": "Activate Powerpack",
-            "path": "/recipes/installation/activate-powerpack",
-            "id": "activate-powerpack",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          },
-          {
             "name": "Install Nx in a Non-Javascript Repo",
             "path": "/recipes/installation/install-non-javascript",
             "id": "install-non-javascript",
@@ -2169,14 +2063,6 @@
             "disableCollapsible": false
           }
         ],
-        "disableCollapsible": false
-      },
-      {
-        "name": "Activate Powerpack",
-        "path": "/recipes/installation/activate-powerpack",
-        "id": "activate-powerpack",
-        "isExternal": false,
-        "children": [],
         "disableCollapsible": false
       },
       {
@@ -3969,6 +3855,121 @@
         "name": "Build Before Versioning",
         "path": "/recipes/nx-release/build-before-versioning",
         "id": "build-before-versioning",
+        "isExternal": false,
+        "children": [],
+        "disableCollapsible": false
+      },
+      {
+        "name": "Enterprise",
+        "path": "/nx-enterprise",
+        "id": "nx-enterprise",
+        "isExternal": false,
+        "children": [
+          {
+            "name": "Activate Powerpack",
+            "path": "/nx-enterprise/activate-powerpack",
+            "id": "activate-powerpack",
+            "isExternal": false,
+            "children": [],
+            "disableCollapsible": false
+          },
+          {
+            "name": "Powerpack Features",
+            "path": "/nx-enterprise/powerpack",
+            "id": "powerpack",
+            "isExternal": false,
+            "children": [
+              {
+                "name": "Run Language-Agnostic Conformance Rules",
+                "path": "/nx-enterprise/powerpack/conformance",
+                "id": "conformance",
+                "isExternal": false,
+                "children": [],
+                "disableCollapsible": false
+              },
+              {
+                "name": "Define Code Ownership at the Project Level",
+                "path": "/nx-enterprise/powerpack/owners",
+                "id": "owners",
+                "isExternal": false,
+                "children": [],
+                "disableCollapsible": false
+              },
+              {
+                "name": "Self-Host the Remote Cache",
+                "path": "/nx-enterprise/powerpack/custom-caching",
+                "id": "custom-caching",
+                "isExternal": false,
+                "children": [],
+                "disableCollapsible": false
+              }
+            ],
+            "disableCollapsible": false
+          }
+        ],
+        "disableCollapsible": false
+      },
+      {
+        "name": "Activate Powerpack",
+        "path": "/nx-enterprise/activate-powerpack",
+        "id": "activate-powerpack",
+        "isExternal": false,
+        "children": [],
+        "disableCollapsible": false
+      },
+      {
+        "name": "Powerpack Features",
+        "path": "/nx-enterprise/powerpack",
+        "id": "powerpack",
+        "isExternal": false,
+        "children": [
+          {
+            "name": "Run Language-Agnostic Conformance Rules",
+            "path": "/nx-enterprise/powerpack/conformance",
+            "id": "conformance",
+            "isExternal": false,
+            "children": [],
+            "disableCollapsible": false
+          },
+          {
+            "name": "Define Code Ownership at the Project Level",
+            "path": "/nx-enterprise/powerpack/owners",
+            "id": "owners",
+            "isExternal": false,
+            "children": [],
+            "disableCollapsible": false
+          },
+          {
+            "name": "Self-Host the Remote Cache",
+            "path": "/nx-enterprise/powerpack/custom-caching",
+            "id": "custom-caching",
+            "isExternal": false,
+            "children": [],
+            "disableCollapsible": false
+          }
+        ],
+        "disableCollapsible": false
+      },
+      {
+        "name": "Run Language-Agnostic Conformance Rules",
+        "path": "/nx-enterprise/powerpack/conformance",
+        "id": "conformance",
+        "isExternal": false,
+        "children": [],
+        "disableCollapsible": false
+      },
+      {
+        "name": "Define Code Ownership at the Project Level",
+        "path": "/nx-enterprise/powerpack/owners",
+        "id": "owners",
+        "isExternal": false,
+        "children": [],
+        "disableCollapsible": false
+      },
+      {
+        "name": "Self-Host the Remote Cache",
+        "path": "/nx-enterprise/powerpack/custom-caching",
+        "id": "custom-caching",
         "isExternal": false,
         "children": [],
         "disableCollapsible": false
@@ -5896,46 +5897,30 @@
             "isExternal": false,
             "children": [
               {
-                "name": "On-Premise",
-                "path": "/ci/recipes/enterprise/on-premise",
-                "id": "on-premise",
+                "name": "Single Tenant",
+                "path": "/ci/recipes/enterprise/single-tenant",
+                "id": "single-tenant",
                 "isExternal": false,
                 "children": [
                   {
-                    "name": "Set up Nx Cloud On-Premise",
-                    "path": "/ci/recipes/enterprise/on-premise/on-premise",
-                    "id": "on-premise",
-                    "isExternal": false,
-                    "children": [],
-                    "disableCollapsible": false
-                  },
-                  {
-                    "name": "Authenticate with a Single Admin",
-                    "path": "/ci/recipes/enterprise/on-premise/auth-single-admin",
-                    "id": "auth-single-admin",
+                    "name": "Single Tenant Nx Cloud Hosting",
+                    "path": "/ci/recipes/enterprise/single-tenant/overview",
+                    "id": "overview",
                     "isExternal": false,
                     "children": [],
                     "disableCollapsible": false
                   },
                   {
                     "name": "Authenticate with GitHub",
-                    "path": "/ci/recipes/enterprise/on-premise/auth-github",
+                    "path": "/ci/recipes/enterprise/single-tenant/auth-github",
                     "id": "auth-github",
                     "isExternal": false,
                     "children": [],
                     "disableCollapsible": false
                   },
                   {
-                    "name": "On-Prem VM Setup",
-                    "path": "/ci/recipes/enterprise/on-premise/ami-setup",
-                    "id": "ami-setup",
-                    "isExternal": false,
-                    "children": [],
-                    "disableCollapsible": false
-                  },
-                  {
                     "name": "Authenticate with GitLab",
-                    "path": "/ci/recipes/enterprise/on-premise/auth-gitlab",
+                    "path": "/ci/recipes/enterprise/single-tenant/auth-gitlab",
                     "id": "auth-gitlab",
                     "isExternal": false,
                     "children": [],
@@ -5943,7 +5928,7 @@
                   },
                   {
                     "name": "Authenticate with BitBucket",
-                    "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket",
+                    "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket",
                     "id": "auth-bitbucket",
                     "isExternal": false,
                     "children": [],
@@ -5951,7 +5936,7 @@
                   },
                   {
                     "name": "Authenticate with BitBucket Data Center",
-                    "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket-data-center",
+                    "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket-data-center",
                     "id": "auth-bitbucket-data-center",
                     "isExternal": false,
                     "children": [],
@@ -5959,23 +5944,15 @@
                   },
                   {
                     "name": "Authenticate via SAML",
-                    "path": "/ci/recipes/enterprise/on-premise/auth-saml",
+                    "path": "/ci/recipes/enterprise/single-tenant/auth-saml",
                     "id": "auth-saml",
                     "isExternal": false,
                     "children": [],
                     "disableCollapsible": false
                   },
                   {
-                    "name": "Advanced Configuration",
-                    "path": "/ci/recipes/enterprise/on-premise/advanced-config",
-                    "id": "advanced-config",
-                    "isExternal": false,
-                    "children": [],
-                    "disableCollapsible": false
-                  },
-                  {
                     "name": "Custom GitHub App",
-                    "path": "/ci/recipes/enterprise/on-premise/custom-github-app",
+                    "path": "/ci/recipes/enterprise/single-tenant/custom-github-app",
                     "id": "custom-github-app",
                     "isExternal": false,
                     "children": [],
@@ -6330,46 +6307,30 @@
         "isExternal": false,
         "children": [
           {
-            "name": "On-Premise",
-            "path": "/ci/recipes/enterprise/on-premise",
-            "id": "on-premise",
+            "name": "Single Tenant",
+            "path": "/ci/recipes/enterprise/single-tenant",
+            "id": "single-tenant",
             "isExternal": false,
             "children": [
               {
-                "name": "Set up Nx Cloud On-Premise",
-                "path": "/ci/recipes/enterprise/on-premise/on-premise",
-                "id": "on-premise",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              },
-              {
-                "name": "Authenticate with a Single Admin",
-                "path": "/ci/recipes/enterprise/on-premise/auth-single-admin",
-                "id": "auth-single-admin",
+                "name": "Single Tenant Nx Cloud Hosting",
+                "path": "/ci/recipes/enterprise/single-tenant/overview",
+                "id": "overview",
                 "isExternal": false,
                 "children": [],
                 "disableCollapsible": false
               },
               {
                 "name": "Authenticate with GitHub",
-                "path": "/ci/recipes/enterprise/on-premise/auth-github",
+                "path": "/ci/recipes/enterprise/single-tenant/auth-github",
                 "id": "auth-github",
                 "isExternal": false,
                 "children": [],
                 "disableCollapsible": false
               },
               {
-                "name": "On-Prem VM Setup",
-                "path": "/ci/recipes/enterprise/on-premise/ami-setup",
-                "id": "ami-setup",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              },
-              {
                 "name": "Authenticate with GitLab",
-                "path": "/ci/recipes/enterprise/on-premise/auth-gitlab",
+                "path": "/ci/recipes/enterprise/single-tenant/auth-gitlab",
                 "id": "auth-gitlab",
                 "isExternal": false,
                 "children": [],
@@ -6377,7 +6338,7 @@
               },
               {
                 "name": "Authenticate with BitBucket",
-                "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket",
+                "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket",
                 "id": "auth-bitbucket",
                 "isExternal": false,
                 "children": [],
@@ -6385,7 +6346,7 @@
               },
               {
                 "name": "Authenticate with BitBucket Data Center",
-                "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket-data-center",
+                "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket-data-center",
                 "id": "auth-bitbucket-data-center",
                 "isExternal": false,
                 "children": [],
@@ -6393,23 +6354,15 @@
               },
               {
                 "name": "Authenticate via SAML",
-                "path": "/ci/recipes/enterprise/on-premise/auth-saml",
+                "path": "/ci/recipes/enterprise/single-tenant/auth-saml",
                 "id": "auth-saml",
                 "isExternal": false,
                 "children": [],
                 "disableCollapsible": false
               },
               {
-                "name": "Advanced Configuration",
-                "path": "/ci/recipes/enterprise/on-premise/advanced-config",
-                "id": "advanced-config",
-                "isExternal": false,
-                "children": [],
-                "disableCollapsible": false
-              },
-              {
                 "name": "Custom GitHub App",
-                "path": "/ci/recipes/enterprise/on-premise/custom-github-app",
+                "path": "/ci/recipes/enterprise/single-tenant/custom-github-app",
                 "id": "custom-github-app",
                 "isExternal": false,
                 "children": [],
@@ -6479,46 +6432,30 @@
         "disableCollapsible": false
       },
       {
-        "name": "On-Premise",
-        "path": "/ci/recipes/enterprise/on-premise",
-        "id": "on-premise",
+        "name": "Single Tenant",
+        "path": "/ci/recipes/enterprise/single-tenant",
+        "id": "single-tenant",
         "isExternal": false,
         "children": [
           {
-            "name": "Set up Nx Cloud On-Premise",
-            "path": "/ci/recipes/enterprise/on-premise/on-premise",
-            "id": "on-premise",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          },
-          {
-            "name": "Authenticate with a Single Admin",
-            "path": "/ci/recipes/enterprise/on-premise/auth-single-admin",
-            "id": "auth-single-admin",
+            "name": "Single Tenant Nx Cloud Hosting",
+            "path": "/ci/recipes/enterprise/single-tenant/overview",
+            "id": "overview",
             "isExternal": false,
             "children": [],
             "disableCollapsible": false
           },
           {
             "name": "Authenticate with GitHub",
-            "path": "/ci/recipes/enterprise/on-premise/auth-github",
+            "path": "/ci/recipes/enterprise/single-tenant/auth-github",
             "id": "auth-github",
             "isExternal": false,
             "children": [],
             "disableCollapsible": false
           },
           {
-            "name": "On-Prem VM Setup",
-            "path": "/ci/recipes/enterprise/on-premise/ami-setup",
-            "id": "ami-setup",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          },
-          {
             "name": "Authenticate with GitLab",
-            "path": "/ci/recipes/enterprise/on-premise/auth-gitlab",
+            "path": "/ci/recipes/enterprise/single-tenant/auth-gitlab",
             "id": "auth-gitlab",
             "isExternal": false,
             "children": [],
@@ -6526,7 +6463,7 @@
           },
           {
             "name": "Authenticate with BitBucket",
-            "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket",
+            "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket",
             "id": "auth-bitbucket",
             "isExternal": false,
             "children": [],
@@ -6534,7 +6471,7 @@
           },
           {
             "name": "Authenticate with BitBucket Data Center",
-            "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket-data-center",
+            "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket-data-center",
             "id": "auth-bitbucket-data-center",
             "isExternal": false,
             "children": [],
@@ -6542,23 +6479,15 @@
           },
           {
             "name": "Authenticate via SAML",
-            "path": "/ci/recipes/enterprise/on-premise/auth-saml",
+            "path": "/ci/recipes/enterprise/single-tenant/auth-saml",
             "id": "auth-saml",
             "isExternal": false,
             "children": [],
             "disableCollapsible": false
           },
           {
-            "name": "Advanced Configuration",
-            "path": "/ci/recipes/enterprise/on-premise/advanced-config",
-            "id": "advanced-config",
-            "isExternal": false,
-            "children": [],
-            "disableCollapsible": false
-          },
-          {
             "name": "Custom GitHub App",
-            "path": "/ci/recipes/enterprise/on-premise/custom-github-app",
+            "path": "/ci/recipes/enterprise/single-tenant/custom-github-app",
             "id": "custom-github-app",
             "isExternal": false,
             "children": [],
@@ -6568,40 +6497,24 @@
         "disableCollapsible": false
       },
       {
-        "name": "Set up Nx Cloud On-Premise",
-        "path": "/ci/recipes/enterprise/on-premise/on-premise",
-        "id": "on-premise",
-        "isExternal": false,
-        "children": [],
-        "disableCollapsible": false
-      },
-      {
-        "name": "Authenticate with a Single Admin",
-        "path": "/ci/recipes/enterprise/on-premise/auth-single-admin",
-        "id": "auth-single-admin",
+        "name": "Single Tenant Nx Cloud Hosting",
+        "path": "/ci/recipes/enterprise/single-tenant/overview",
+        "id": "overview",
         "isExternal": false,
         "children": [],
         "disableCollapsible": false
       },
       {
         "name": "Authenticate with GitHub",
-        "path": "/ci/recipes/enterprise/on-premise/auth-github",
+        "path": "/ci/recipes/enterprise/single-tenant/auth-github",
         "id": "auth-github",
         "isExternal": false,
         "children": [],
         "disableCollapsible": false
       },
       {
-        "name": "On-Prem VM Setup",
-        "path": "/ci/recipes/enterprise/on-premise/ami-setup",
-        "id": "ami-setup",
-        "isExternal": false,
-        "children": [],
-        "disableCollapsible": false
-      },
-      {
         "name": "Authenticate with GitLab",
-        "path": "/ci/recipes/enterprise/on-premise/auth-gitlab",
+        "path": "/ci/recipes/enterprise/single-tenant/auth-gitlab",
         "id": "auth-gitlab",
         "isExternal": false,
         "children": [],
@@ -6609,7 +6522,7 @@
       },
       {
         "name": "Authenticate with BitBucket",
-        "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket",
+        "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket",
         "id": "auth-bitbucket",
         "isExternal": false,
         "children": [],
@@ -6617,7 +6530,7 @@
       },
       {
         "name": "Authenticate with BitBucket Data Center",
-        "path": "/ci/recipes/enterprise/on-premise/auth-bitbucket-data-center",
+        "path": "/ci/recipes/enterprise/single-tenant/auth-bitbucket-data-center",
         "id": "auth-bitbucket-data-center",
         "isExternal": false,
         "children": [],
@@ -6625,23 +6538,15 @@
       },
       {
         "name": "Authenticate via SAML",
-        "path": "/ci/recipes/enterprise/on-premise/auth-saml",
+        "path": "/ci/recipes/enterprise/single-tenant/auth-saml",
         "id": "auth-saml",
         "isExternal": false,
         "children": [],
         "disableCollapsible": false
       },
       {
-        "name": "Advanced Configuration",
-        "path": "/ci/recipes/enterprise/on-premise/advanced-config",
-        "id": "advanced-config",
-        "isExternal": false,
-        "children": [],
-        "disableCollapsible": false
-      },
-      {
         "name": "Custom GitHub App",
-        "path": "/ci/recipes/enterprise/on-premise/custom-github-app",
+        "path": "/ci/recipes/enterprise/single-tenant/custom-github-app",
         "id": "custom-github-app",
         "isExternal": false,
         "children": [],
@@ -8495,14 +8400,6 @@
                 "children": [],
                 "isExternal": false,
                 "disableCollapsible": false
-              },
-              {
-                "id": "export",
-                "path": "/nx-api/next/executors/export",
-                "name": "export",
-                "children": [],
-                "isExternal": false,
-                "disableCollapsible": false
               }
             ],
             "isExternal": false,
@@ -9940,6 +9837,14 @@
                 "children": [],
                 "isExternal": false,
                 "disableCollapsible": false
+              },
+              {
+                "id": "convert-webpack",
+                "path": "/nx-api/rspack/generators/convert-webpack",
+                "name": "convert-webpack",
+                "children": [],
+                "isExternal": false,
+                "disableCollapsible": false
               }
             ],
             "isExternal": false,
@@ -10597,6 +10502,32 @@
         "disableCollapsible": false
       },
       {
+        "id": "powerpack-azure-cache",
+        "path": "/nx-api/powerpack-azure-cache",
+        "name": "powerpack-azure-cache",
+        "children": [
+          {
+            "id": "documents",
+            "path": "/nx-api/powerpack-azure-cache/documents",
+            "name": "documents",
+            "children": [
+              {
+                "name": "Overview",
+                "path": "/nx-api/powerpack-azure-cache/documents/overview",
+                "id": "overview",
+                "isExternal": false,
+                "children": [],
+                "disableCollapsible": false
+              }
+            ],
+            "isExternal": false,
+            "disableCollapsible": false
+          }
+        ],
+        "isExternal": false,
+        "disableCollapsible": false
+      },
+      {
         "id": "powerpack-conformance",
         "path": "/nx-api/powerpack-conformance",
         "name": "powerpack-conformance",
@@ -10609,6 +10540,75 @@
               {
                 "name": "Overview",
                 "path": "/nx-api/powerpack-conformance/documents/overview",
+                "id": "overview",
+                "isExternal": false,
+                "children": [],
+                "disableCollapsible": false
+              }
+            ],
+            "isExternal": false,
+            "disableCollapsible": false
+          },
+          {
+            "id": "executors",
+            "path": "/nx-api/powerpack-conformance/executors",
+            "name": "executors",
+            "children": [
+              {
+                "id": "bundle-rule",
+                "path": "/nx-api/powerpack-conformance/executors/bundle-rule",
+                "name": "bundle-rule",
+                "children": [],
+                "isExternal": false,
+                "disableCollapsible": false
+              }
+            ],
+            "isExternal": false,
+            "disableCollapsible": false
+          }
+        ],
+        "isExternal": false,
+        "disableCollapsible": false
+      },
+      {
+        "id": "powerpack-enterprise-cloud",
+        "path": "/nx-api/powerpack-enterprise-cloud",
+        "name": "powerpack-enterprise-cloud",
+        "children": [
+          {
+            "id": "generators",
+            "path": "/nx-api/powerpack-enterprise-cloud/generators",
+            "name": "generators",
+            "children": [
+              {
+                "id": "init",
+                "path": "/nx-api/powerpack-enterprise-cloud/generators/init",
+                "name": "init",
+                "children": [],
+                "isExternal": false,
+                "disableCollapsible": false
+              }
+            ],
+            "isExternal": false,
+            "disableCollapsible": false
+          }
+        ],
+        "isExternal": false,
+        "disableCollapsible": false
+      },
+      {
+        "id": "powerpack-gcs-cache",
+        "path": "/nx-api/powerpack-gcs-cache",
+        "name": "powerpack-gcs-cache",
+        "children": [
+          {
+            "id": "documents",
+            "path": "/nx-api/powerpack-gcs-cache/documents",
+            "name": "documents",
+            "children": [
+              {
+                "name": "Overview",
+                "path": "/nx-api/powerpack-gcs-cache/documents/overview",
                 "id": "overview",
                 "isExternal": false,
                 "children": [],
