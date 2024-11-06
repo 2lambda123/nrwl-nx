@@ -45,15 +45,6 @@ export function CourseDetails({ course }: CourseDetailsProps) {
             <span className="text-sm">{course.authors[0].name}</span>
           </div>
         </div>
-        {/* <div className="course-icon">
-          <Image
-            src={`/documentation/courses/images/${course.id}.png`}
-            alt={`${course.title} icon`}
-            width={96}
-            height={96}
-            className="h-24 w-24 object-cover"
-          />
-        </div> */}
       </div>
 
       <div className="mt-10 flex items-center gap-x-6">

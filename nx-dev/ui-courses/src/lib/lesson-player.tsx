@@ -31,71 +31,77 @@ function formatDuration(duration: string): string {
   return `${minutes}m ${seconds.toString().padStart(2, '0')}s`;
 }
 
+const LessonsList = ({
+  course,
+  lesson,
+}: {
+  course: Course;
+  lesson: Lesson;
+}) => (
+  <ul className="space-y-2">
+    {course.lessons.map((item, index) => (
+      <li key={item.id}>
+        <Link
+          href={`/courses/${course.id}/${item.id}`}
+          className={cx(
+            'flex w-full items-center px-3 py-2 transition-colors',
+            {
+              'bg-blue-50 text-blue-900 dark:bg-blue-900/20 dark:text-blue-100':
+                item.id === lesson.id,
+              'hover:bg-slate-100 dark:hover:bg-slate-800':
+                item.id !== lesson.id,
+            }
+          )}
+          prefetch={false}
+        >
+          <span
+            className={cx('inline-block min-w-[2rem] flex-shrink-0 text-sm', {
+              'text-blue-600 dark:text-blue-400': item.id === lesson.id,
+              'text-slate-400 dark:text-slate-500': item.id !== lesson.id,
+            })}
+          >
+            {(index + 1).toString()}
+          </span>
+          <span className="flex-1 text-sm leading-normal">
+            <span
+              className={cx('', {
+                'font-semibold': item.id === lesson.id,
+                'text-slate-700 dark:text-slate-300': item.id !== lesson.id,
+              })}
+            >
+              {item.title}
+            </span>
+          </span>
+          {item.duration && (
+            <span className="ml-2 flex items-center gap-1 text-xs text-slate-400 dark:text-slate-500">
+              <svg
+                className="h-3 w-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              {formatDuration(item.duration)}
+            </span>
+          )}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
+
 export function LessonPlayer({ course, lesson }: LessonPlayerProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { node: lessonContent } = renderMarkdown(lesson.description, {
     filePath: lesson.filePath,
     headingClass: 'scroll-mt-20',
   });
-
-  const LessonsList = () => (
-    <ul className="space-y-2">
-      {course.lessons.map((item, index) => (
-        <li key={item.id}>
-          <Link
-            href={`/courses/${course.id}/${item.id}`}
-            className={cx(
-              'flex w-full items-center px-3 py-2 transition-colors',
-              {
-                'bg-blue-50 text-blue-900 dark:bg-blue-900/20 dark:text-blue-100':
-                  item.id === lesson.id,
-                'hover:bg-slate-100 dark:hover:bg-slate-800':
-                  item.id !== lesson.id,
-              }
-            )}
-            prefetch={false}
-          >
-            <span
-              className={cx('inline-block min-w-[2rem] flex-shrink-0 text-sm', {
-                'text-blue-600 dark:text-blue-400': item.id === lesson.id,
-                'text-slate-400 dark:text-slate-500': item.id !== lesson.id,
-              })}
-            >
-              {(index + 1).toString()}
-            </span>
-            <span className="flex-1 text-sm leading-normal">
-              <span
-                className={cx('', {
-                  'font-semibold': item.id === lesson.id,
-                  'text-slate-700 dark:text-slate-300': item.id !== lesson.id,
-                })}
-              >
-                {item.title}
-              </span>
-            </span>
-            {item.duration && (
-              <span className="ml-2 flex items-center gap-1 text-xs text-slate-400 dark:text-slate-500">
-                <svg
-                  className="h-3 w-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                {formatDuration(item.duration)}
-              </span>
-            )}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
 
   return (
     <>
@@ -118,7 +124,7 @@ export function LessonPlayer({ course, lesson }: LessonPlayerProps) {
             </Link>
           </div>
           <div className="flex-1 overflow-y-auto py-4">
-            <LessonsList />
+            <LessonsList course={course} lesson={lesson} />
           </div>
         </div>
 

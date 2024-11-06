@@ -1,4 +1,3 @@
-import React from 'react';
 import { DefaultLayout } from '@nx/nx-dev/ui-common';
 import { CourseOverview, CourseHero } from '@nx/nx-dev/ui-video-courses';
 import { coursesApi } from '../../lib/courses.api';
