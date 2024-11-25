@@ -41,7 +41,7 @@ jobs:
 
       - name: Download artifact
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2 # Needed since we are downloading artifact from a different workflow run, official actions/download-artifact doesn't support this.
+        uses: dawidd6/action-download-artifact@v6 # Needed since we are downloading artifact from a different workflow run, official actions/download-artifact doesn't support this.
         with:
           name: cached-issue-data
           path: ${{ github.workspace }}/scripts/issues-scraper/cached
