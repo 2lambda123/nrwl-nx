@@ -272,7 +272,7 @@
     "react-textarea-autosize": "^8.5.3",
     "regenerator-runtime": "0.13.7",
     "resolve.exports": "1.1.0",
-    "rollup": "^4.24.1",
+    "rollup": "^4.24.2",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
